@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Excel Infosys | IT Solutions & Repair Experts</title>
+  <!-- Font Awesome 6 (free) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- EmailJS SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <!-- SEO Meta -->
+  <meta name="description" content="Excel Infosys - Your trusted IT partner for hardware sales, software solutions, repair & maintenance. Fast service, expert technicians, affordable pricing.">
+  <meta name="keywords" content="IT solutions, laptop repair, hardware sales, networking support, software licensing">
+  <meta name="author" content="Excel Infosys">
+  <!-- Google Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #ffffff;
+      color: #1e2a3e;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+    }
+
+    /* Color Scheme: White & Blue */
+    :root {
+      --primary: #0a58ca;
+      --primary-dark: #084298;
+      --primary-light: #e9f0ff;
+      --secondary: #6c757d;
+      --gray-light: #f8f9fc;
+      --gray-border: #e9ecef;
+      --text-dark: #1e2a3e;
+      --shadow-sm: 0 4px 12px rgba(0,0,0,0.03), 0 1px 2px rgba(0,0,0,0.05);
+      --shadow-md: 0 8px 24px rgba(0,0,0,0.05);
+    }
+
+    /* Utility */
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    section {
+      padding: 80px 0;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: var(--text-dark);
+      letter-spacing: -0.01em;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: white;
+      border: 1px solid var(--gray-border);
+      padding: 12px 28px;
+      border-radius: 40px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      cursor: pointer;
+      font-size: 0.95rem;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: white;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 18px rgba(10,88,202,0.2);
+    }
+
+    .btn-outline {
+      border-color: var(--primary);
+      color: var(--primary);
+      background: transparent;
+    }
+
+    .btn-outline:hover {
+      background: var(--primary-light);
+      border-color: var(--primary);
+    }
+
+    .btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    /* Navbar - Mobile First Improvements */
+    .navbar {
+      background: white;
+      box-shadow: 0 1px 0 var(--gray-border);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      width: 100%;
+    }
+
+    .nav-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      padding: 16px 20px;
+    }
+
+    .logo h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+
+    .logo span {
+      color: var(--primary);
+    }
+
+    .nav-links {
+      display: none;
+      width: 100%;
+      flex-direction: column;
+      gap: 16px;
+      padding: 20px 0 12px;
+      list-style: none;
+      background: white;
+    }
+
+    .nav-links.active {
+      display: flex;
+    }
+
+    .nav-links li {
+      width: 100%;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 500;
+      color: var(--text-dark);
+      transition: color 0.2s;
+      display: block;
+      padding: 8px 0;
+      font-size: 1rem;
+    }
+
+    .nav-links a:hover, .nav-links a.active {
+      color: var(--primary);
+    }
+
+    .mobile-menu {
+      display: block;
+      font-size: 1.6rem;
+      cursor: pointer;
+      color: var(--primary);
+    }
+
+    /* Hero Section - Mobile Optimized */
+    .hero {
+      background: linear-gradient(135deg, #f5f9ff 0%, #ffffff 100%);
+      padding: 40px 0 60px;
+    }
+
+    .hero-grid {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .hero-content {
+      flex: 1;
+      text-align: center;
+    }
+
+    .hero-content h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 16px;
+    }
+
+    .hero-badge {
+      background: var(--primary-light);
+      color: var(--primary);
+      display: inline-block;
+      padding: 6px 14px;
+      border-radius: 30px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+
+    .hero-image {
+      flex: 1;
+      text-align: center;
+      width: 100%;
+    }
+
+    .hero-image img {
+      max-width: 100%;
+      border-radius: 28px;
+      box-shadow: var(--shadow-md);
+      object-fit: cover;
+      width: 100%;
+      height: auto;
+      max-height: 280px;
+    }
+
+    /* Highlights - Mobile Grid */
+    .highlights {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin: 32px 0 24px;
+    }
+
+    .highlight-card {
+      background: white;
+      border-radius: 20px;
+      padding: 16px 20px;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--gray-border);
+      text-align: center;
+    }
+
+    .highlight-card i {
+      font-size: 1.8rem;
+      color: var(--primary);
+      margin-bottom: 8px;
+    }
+
+    .highlight-card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 4px;
+    }
+
+    .highlight-card p {
+      font-size: 0.85rem;
+      color: var(--secondary);
+    }
+
+    /* Cards Grid - Responsive */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+      margin-top: 20px;
+    }
+
+    .service-card, .product-card, .testimonial-card {
+      background: white;
+      border-radius: 24px;
+      padding: 24px 20px;
+      border: 1px solid var(--gray-border);
+      transition: all 0.3s ease;
+      box-shadow: var(--shadow-sm);
+      text-align: center;
+    }
+
+    .service-icon {
+      font-size: 2.2rem;
+      color: var(--primary);
+      margin-bottom: 16px;
+    }
+
+    .product-cat {
+      margin-bottom: 28px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .cat-badge {
+      display: inline-block;
+      background: var(--primary-light);
+      padding: 6px 16px;
+      border-radius: 40px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    /* Repair & Contact Form */
+    .contact-form {
+      background: var(--gray-light);
+      border-radius: 28px;
+      padding: 28px 20px;
+      border: 1px solid var(--gray-border);
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 14px 16px;
+      border-radius: 16px;
+      border: 1px solid var(--gray-border);
+      font-family: inherit;
+      transition: 0.2s;
+      font-size: 0.95rem;
+    }
+
+    input:focus, textarea:focus, select:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(10,88,202,0.1);
+    }
+
+    /* Google Map container */
+    .google-map-container {
+      width: 100%;
+      height: 240px;
+      border-radius: 20px;
+      overflow: hidden;
+      margin-top: 20px;
+      border: 1px solid var(--gray-border);
+    }
+
+    .google-map-container iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+    }
+
+    footer {
+      background: #101b2b;
+      color: #adb7c4;
+      padding: 40px 0 24px;
+    }
+
+    .whatsapp-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #25D366;
+      color: white;
+      border-radius: 50px;
+      padding: 10px 18px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 600;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      z-index: 999;
+      text-decoration: none;
+      font-size: 0.85rem;
+    }
+
+    .blog-preview {
+      background: var(--gray-light);
+      border-radius: 24px;
+      padding: 24px;
+    }
+    .blog-item {
+      border-left: 3px solid var(--primary);
+      padding-left: 16px;
+      margin-bottom: 18px;
+      font-size: 0.9rem;
+    }
+    .star-rating {
+      color: #f5b042;
+      margin-bottom: 12px;
+    }
+
+    .repair-form-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+
+    /* Toast notification */
+    .toast-notification {
+      position: fixed;
+      bottom: 80px;
+      right: 20px;
+      background: white;
+      color: #1e2a3e;
+      padding: 14px 24px;
+      border-radius: 50px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      z-index: 1000;
+      font-weight: 500;
+      border-left: 4px solid var(--primary);
+      transform: translateX(400px);
+      transition: transform 0.3s ease;
+    }
+    .toast-notification.show {
+      transform: translateX(0);
+    }
+    .toast-notification.success {
+      border-left-color: #10b981;
+    }
+    .toast-notification.error {
+      border-left-color: #ef4444;
+    }
+
+    /* Setup instruction banner */
+    .setup-banner {
+      background: #fff3cd;
+      border: 1px solid #ffecb5;
+      color: #856404;
+      padding: 12px 20px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      font-size: 0.85rem;
+      display: none;
+    }
+    .setup-banner a {
+      color: #0a58ca;
+      font-weight: 600;
+    }
+
+    @media (min-width: 640px) {
+      .highlights {
+        flex-direction: row;
+      }
+      .cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .hero-content h1 {
+        font-size: 2.4rem;
+      }
+      .hero-grid {
+        flex-direction: row;
+        text-align: left;
+      }
+      .hero-content {
+        text-align: left;
+      }
+      .repair-form-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (min-width: 768px) {
+      .nav-links {
+        display: flex !important;
+        width: auto;
+        flex-direction: row;
+        gap: 28px;
+        padding: 0;
+      }
+      .mobile-menu {
+        display: none;
+      }
+      .nav-container {
+        padding: 18px 24px;
+      }
+      .logo h1 {
+        font-size: 1.7rem;
+      }
+      .hero-content h1 {
+        font-size: 3rem;
+      }
+      .hero-image img {
+        max-height: 360px;
+      }
+      .cards-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      }
+      .contact-form {
+        padding: 40px;
+      }
+      .google-map-container {
+        height: 280px;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .container {
+        padding: 0 32px;
+      }
+      section {
+        padding: 100px 0;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .btn {
+        padding: 10px 20px;
+        font-size: 0.85rem;
+      }
+      .section-title {
+        font-size: 1.8rem;
+      }
+      .whatsapp-float {
+        padding: 8px 16px;
+        font-size: 0.8rem;
+        bottom: 16px;
+        right: 16px;
+      }
+      .hero-badge {
+        font-size: 0.75rem;
+      }
+      .hero-content h1 {
+        font-size: 1.8rem;
+      }
+    }
+
+    .contact-details {
+      word-break: break-word;
+    }
+    .contact-details p {
+      margin-bottom: 12px;
+      font-size: 0.95rem;
+    }
+    .contact-details a {
+      color: inherit;
+      text-decoration: none;
+    }
+    .contact-details a:hover {
+      color: var(--primary);
+    }
+    footer a {
+      text-decoration: none;
+      color: #adb7c4;
+    }
+    footer a:hover {
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+<!-- WhatsApp Integration -->
+<a href="https://wa.me/916354332115?text=Hello%20Excel%20Infosys%2C%20I%20need%20assistance%20regarding%20IT%20solutions" class="whatsapp-float" target="_blank">
+  <i class="fab fa-whatsapp" style="font-size: 1.2rem;"></i> Chat with Expert
+</a>
+
+<!-- Toast Notification Container -->
+<div id="toastMsg" class="toast-notification">
+  <i class="fas fa-check-circle"></i>
+  <span id="toastText">Message sent!</span>
+</div>
+
+<!-- Navbar -->
+<nav class="navbar">
+  <div class="nav-container">
+    <div class="logo">
+      <h1>Excel <span>Infosys</span></h1>
+    </div>
+    <div class="mobile-menu" id="mobileMenuBtn">
+      <i class="fas fa-bars"></i>
+    </div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home" class="active nav-link">Home</a></li>
+      <li><a href="#about" class="nav-link">About</a></li>
+      <li><a href="#services" class="nav-link">Services</a></li>
+      <li><a href="#products" class="nav-link">Products</a></li>
+      <li><a href="#repair" class="nav-link">Repair</a></li>
+      <li><a href="#testimonials" class="nav-link">Testimonials</a></li>
+      <li><a href="#contact" class="nav-link">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Home Section -->
+<section id="home" class="hero">
+  <div class="container hero-grid">
+    <div class="hero-content">
+      <div class="hero-badge"><i class="fas fa-microchip"></i> Since 2011</div>
+      <h1>Your Trusted IT Partner for <span style="color: var(--primary);">Sales & Repair Solutions</span></h1>
+      <p style="font-size: 1rem; color: #4a5b6e; margin: 16px 0;">Hardware | Software | Networking | CCTV Installation</p>
+      <div class="highlights">
+        <div class="highlight-card"><i class="fas fa-bolt"></i><h3>Fast Service</h3><p>Same-day diagnostics</p></div>
+        <div class="highlight-card"><i class="fas fa-tag"></i><h3>Affordable Pricing</h3><p>Best rates guaranteed</p></div>
+        <div class="highlight-card"><i class="fas fa-user-check"></i><h3>Expert Technicians</h3><p>Certified professionals</p></div>
+      </div>
+      <div style="display: flex; gap: 12px; flex-wrap: wrap; justify-content: center;">
+        <a href="#repair" class="btn btn-primary" id="getQuoteBtn"><i class="fas fa-file-invoice"></i> Get Quote</a>
+        <a href="#contact" class="btn btn-outline"><i class="fas fa-headset"></i> Contact Us</a>
+      </div>
+    </div>
+    <div class="hero-image">
+      <img src="https://i.postimg.cc/KcsM500Q/EXCEL-INFOSYS-LOGO.jpg" alt="Excel Infosys Logo" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- About -->
+<section id="about">
+  <div class="container">
+    <h2 class="section-title">About Excel Infosys</h2>
+    <div class="cards-grid" style="grid-template-columns: 1fr;">
+      <div>
+        <p style="font-size: 1rem; margin-bottom: 20px;">We are a premier IT solutions company delivering end-to-end hardware & software excellence. From small businesses to large enterprises, Excel Infosys bridges the gap between technology and reliability.</p>
+        <p>Our certified engineers ensure minimal downtime and maximum performance, handling sales, repairs, and 24/7 maintenance of laptops, desktops, printers, and networking infrastructure.</p>
+        <div style="margin-top: 32px;">
+          <h3><i class="fas fa-bullseye" style="color: var(--primary);"></i> Mission</h3>
+          <p>Empower businesses with seamless IT operations through innovation and trust.</p>
+          <h3 style="margin-top: 20px;"><i class="fas fa-eye"></i> Vision</h3>
+          <p>To be India's most reliable IT partner recognized for integrity, speed, and technical mastery.</p>
+        </div>
+      </div>
+      <div>
+        <div class="contact-form" style="background: white;">
+          <h3>Why Choose Us?</h3>
+          <ul style="list-style: none; margin-top: 20px;">
+            <li><i class="fas fa-check-circle" style="color: var(--primary);"></i> 10+ years of IT expertise</li>
+            <li><i class="fas fa-check-circle" style="color: var(--primary);"></i> On-site & remote support</li>
+            <li><i class="fas fa-check-circle" style="color: var(--primary);"></i> Genuine spare parts warranty</li>
+            <li><i class="fas fa-check-circle" style="color: var(--primary);"></i> 100% customer satisfaction</li>
+          </ul>
+          <img src="https://i.ibb.co/F48syKgk/IMG-20260419-214004.jpg" style="border-radius: 20px; margin-top: 28px; width:100%; height: auto; object-fit: cover;" alt="Certified Experts">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Services -->
+<section id="services" style="background: var(--gray-light);">
+  <div class="container">
+    <h2 class="section-title">Our Core Services</h2>
+    <div class="cards-grid">
+      <div class="service-card"><i class="fas fa-laptop-code service-icon"></i><h3>Hardware Sales</h3><p>Laptops, Desktops, Printers, CCTV, Monitors & premium accessories.</p></div>
+      <div class="service-card"><i class="fas fa-cogs service-icon"></i><h3>Software Solutions</h3><p>Licensing, installation, cloud migration, and enterprise upgrades.</p></div>
+      <div class="service-card"><i class="fas fa-wrench service-icon"></i><h3>Repair & Maintenance</h3><p>PC, laptop, printer repairs & preventive maintenance contracts.</p></div>
+      <div class="service-card"><i class="fas fa-network-wired service-icon"></i><h3>Networking & IT Support</h3><p>Router/switch config, Wi-Fi solutions, and remote helpdesk.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Products Showcase -->
+<section id="products">
+  <div class="container">
+    <h2 class="section-title">Top Products We Are Selling</h2>
+    <div class="product-cat">
+      <span class="cat-badge">💻 Laptops</span>
+      <span class="cat-badge">🖥️ Desktop</span>
+      <span class="cat-badge">🖨️ Printer</span>
+      <span class="cat-badge">📷 CCTV</span>
+      <span class="cat-badge">🖱️ Accessories</span>
+      <span class="cat-badge">📡 Networking</span>
+    </div>
+    <div class="cards-grid">
+      <div class="product-card"><i class="fas fa-laptop" style="font-size: 2rem; color: var(--primary);"></i><h3>MacBook Pro</h3><p>M4 Chip, 15.6" Display, 512GB SSD</p><a href="#contact" style="margin-top: 12px; display: inline-block; color: var(--primary); font-weight: 600;">Inquiry →</a></div>
+      <div class="product-card"><i class="fas fa-desktop" style="font-size: 2rem; color: var(--primary);"></i><h3>Gaming Desktop</h3><p>i7 13th Gen, 16GB RAM, RTX 2050</p><a href="#contact" style="margin-top: 12px; display: inline-block; color: var(--primary); font-weight: 600;">Inquiry →</a></div>
+      <div class="product-card"><i class="fas fa-print" style="font-size: 2rem; color: var(--primary);"></i><h3>Canon GX 4070</h3><p>Multifunction printer, wireless & duplex</p><a href="#contact" style="margin-top: 12px; display: inline-block; color: var(--primary); font-weight: 600;">Inquiry →</a></div>
+      <div class="product-card"><i class="fas fa-eye" style="font-size: 2rem; color: var(--primary);"></i><h3>CCTV Cameras</h3><p>24/7 surveillance, motion detection, HD quality</p><a href="#contact" style="margin-top: 12px; display: inline-block; color: var(--primary); font-weight: 600;">Inquiry →</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- Repair Services -->
+<section id="repair" style="background: var(--gray-light);">
+  <div class="container">
+    <h2 class="section-title">Premium Repair & Maintenance</h2>
+    <div class="cards-grid" style="grid-template-columns: repeat(auto-fit, minmax(260px,1fr));">
+      <div class="service-card"><i class="fas fa-microchip"></i><h3>Laptop & Desktop Repair</h3><p>Motherboard, screen, battery, overheating solutions.</p></div>
+      <div class="service-card"><i class="fas fa-truck-fast"></i><h3>Data Recovery</h3><p>Professional Data Recovery from damaged drives.</p></div>
+      <div class="service-card"><i class="fas fa-shield-alt"></i><h3>Warranty Info</h3><p>7 days testing warranty on all repairs & parts.</p></div>
+    </div>
+    <div class="contact-form" style="margin-top: 32px; background: white;">
+      <h3>🚀 Request a Repair Quote</h3>
+      <form id="quoteForm">
+        <div class="repair-form-grid">
+          <input type="text" placeholder="Full Name" id="quoteName" required>
+          <input type="email" placeholder="Email Address" id="quoteEmail" required>
+          <input type="tel" placeholder="Phone" id="quotePhone" required>
+          <select id="quoteDevice">
+            <option>Laptop</option>
+            <option>Desktop</option>
+            <option>Printer</option>
+            <option>CCTV Cameras</option>
+            <option>Network Device</option>
+            <option>Others...</option>
+          </select>
+        </div>
+        <div class="form-group" style="margin-bottom: 20px;">
+          <textarea rows="3" placeholder="Describe issue (e.g., screen broken, not turning on, software error)..." id="quoteIssue" style="width:100%;"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" id="quoteSubmitBtn" style="margin-top: 8px; width: 100%; justify-content: center;"><i class="fas fa-tools"></i> Submit Repair Request</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials -->
+<section id="testimonials">
+  <div class="container">
+    <h2 class="section-title">Customer Reviews</h2>
+    <div class="cards-grid">
+      <div class="testimonial-card"><div class="star-rating">★★★★★</div><p>"Excel Infosys revived my dead laptop within 24 hours. Professional and transparent pricing!"</p><h4>— Bhaskar P.</h4></div>
+      <div class="testimonial-card"><div class="star-rating">★★★★★</div><p>"Reliable networking support for our corporate office. Seamless installation and ongoing maintenance."</p><h4>— Rohan S.</h4></div>
+      <div class="testimonial-card"><div class="star-rating">★★★★☆</div><p>"Quick response, genuine hardware spares. Highly recommended for printer repair services."</p><h4>— Anil D.</h4></div>
+    </div>
+  </div>
+</section>
+
+<!-- Tech Tips -->
+<section id="blog" style="background: var(--gray-light);">
+  <div class="container">
+    <h2 class="section-title">Tech Tips & Updates 📘</h2>
+    <div class="blog-preview">
+      <div class="blog-item"><i class="fas fa-shield-alt"></i> <strong>Cybersecurity Basics:</strong> Protect your business data with 2FA and regular backups.</div>
+      <div class="blog-item"><i class="fas fa-tachometer-alt"></i> <strong>Speed up your PC:</strong> Simple steps to clean temporary files & upgrade RAM.</div>
+      <div class="blog-item"><i class="fas fa-cloud-upload-alt"></i> <strong>Cloud Migration:</strong> How Excel Infosys helps SMBs move to hybrid cloud seamlessly.</div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact + Map -->
+<section id="contact">
+  <div class="container">
+    <h2 class="section-title">Get In Touch</h2>
+    <div class="cards-grid" style="grid-template-columns: 1fr;">
+      <div>
+        <div class="contact-form">
+          <h3>Send us a message</h3>
+          <form id="contactForm">
+            <div class="form-group"><input type="text" placeholder="Full Name" id="contactName" required></div>
+            <div class="form-group"><input type="email" placeholder="Email" id="contactEmail" required></div>
+            <div class="form-group"><input type="text" placeholder="Phone / Company" id="contactPhone"></div>
+            <div class="form-group"><textarea rows="3" placeholder="Your inquiry..." id="contactMsg"></textarea></div>
+            <button type="submit" class="btn btn-primary" id="contactSubmitBtn" style="width: 100%; justify-content: center;">Send Message <i class="fas fa-paper-plane"></i></button>
+          </form>
+        </div>
+      </div>
+      <div>
+        <div style="background: var(--gray-light); border-radius: 28px; padding: 28px 20px;">
+          <div class="contact-details">
+            <p><i class="fas fa-phone-alt" style="color: var(--primary); width: 28px;"></i> <strong>Call us:</strong> <a href="tel:+916354332115">+91 6354332115</a></p>
+            <p><i class="fas fa-envelope" style="color: var(--primary); width: 28px;"></i> <strong>Email:</strong> <a href="mailto:excelinfosys11@gmail.com">excelinfosys11@gmail.com</a></p>
+            <p><i class="fas fa-map-marker-alt" style="color: var(--primary); width: 28px;"></i> <strong>Address:</strong> 6-14, Vimal Park, Nr. Kamdhenu Dairy, Uttamnagar, Nikol Road, Ahmedabad - 382350</p>
+          </div>
+          <div class="google-map-container">
+            <iframe 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3671.583708058236!2d72.64548877564137!3d23.03905241571237!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e86efac1063fd%3A0x29c1f24c086df57d!2sExcel%20Infosys!5e0!3m2!1sen!2sin!4v1776274731903!5m2!1sen!2sin"
+              allowfullscreen="" 
+              loading="lazy" 
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Excel Infosys Shop Location">
+            </iframe>
+          </div>
+          <p style="font-size: 0.75rem; margin-top: 12px; color: var(--secondary); text-align: center;">
+            <i class="fas fa-location-dot"></i> Vimal Park, Uttamnagar, Ahmedabad
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 30px;">
+      <div><h3 style="color:white;">Excel Infosys</h3><p>Empowering businesses with future-ready IT solutions.</p></div>
+      <div><h4>Quick Links</h4><p><a href="#home">Home</a><br><a href="#services">Services</a><br><a href="#repair">Repair</a></p></div>
+      <div><h4>Support</h4><p>Email: excelinfosys11@gmail.com<br>Mon-Sat: 10 AM - 8 PM</p></div>
+    </div>
+    <hr style="border-color: #2a3a55; margin: 32px 0 20px;">
+    <p style="text-align: center; font-size: 0.85rem;">© 2025 Excel Infosys – Your Trusted IT Partner. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+  // ==================== EMAILJS CONFIGURATION ====================
+  const EMAILJS_PUBLIC_KEY = "hSPNKEm3xEnYF22LR";
+  
+  const EMAILJS_SERVICE_ID = "service_w3v6s5p";
+  const EMAILJS_CONTACT_TEMPLATE = "template_qtq5jyg";
+  const EMAILJS_REPAIR_TEMPLATE = "template_1wpkxkt";
+
+  // Initialize EmailJS
+  let emailJSInitialized = false;
+  try {
+    emailjs.init(EMAILJS_PUBLIC_KEY);
+    emailJSInitialized = true;
+    console.log("EmailJS initialized successfully");
+  } catch (error) {
+    console.error("EmailJS initialization failed:", error);
+  }
+
+  // Toast notification function
+  function showToast(message, isError = false) {
+    const toast = document.getElementById('toastMsg');
+    const toastText = document.getElementById('toastText');
+    const toastIcon = toast.querySelector('i');
+    
+    toastText.textContent = message;
+    toast.classList.remove('success', 'error');
+    
+    if (isError) {
+      toast.classList.add('error');
+      toastIcon.className = 'fas fa-exclamation-circle';
+    } else {
+      toast.classList.add('success');
+      toastIcon.className = 'fas fa-check-circle';
+    }
+    
+    toast.classList.add('show');
+    setTimeout(() => {
+      toast.classList.remove('show');
+    }, 5000);
+  }
+
+  // Send email via EmailJS
+  async function sendEmail(templateId, templateParams, form, submitBtn) {
+    if (!emailJSInitialized) {
+      showToast("⚠️ Email service not initialized. Please refresh the page.", true);
+      return false;
+    }
+    /*
+    if (EMAILJS_SERVICE_ID === "service_w3v6s5p") {
+      showToast("❌ Email service not configured. Please update the Service ID in the code.", true);
+      return false;
+    }
+    */
+    try {
+      submitBtn.disabled = true;
+      const originalText = submitBtn.innerHTML;
+      submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+      
+      const response = await emailjs.send(EMAILJS_SERVICE_ID, templateId, templateParams);
+      
+      if (response.status === 200) {
+        showToast("✓ Message sent successfully! We'll get back to you soon.");
+        form.reset();
+        return true;
+      } else {
+        throw new Error("Failed to send");
+      }
+    } catch (error) {
+      console.error("EmailJS Error:", error);
+      let errorMsg = "❌ Failed to send message. ";
+      if (error.message === "service ID not found") {
+        errorMsg = "❌ Service ID not found. Please check your EmailJS Service ID at https://dashboard.emailjs.com/admin";
+      } else if (error.text) {
+        errorMsg += error.text;
+      } else {
+        errorMsg += "Please verify your EmailJS credentials (Service ID, Template IDs).";
+      }
+      showToast(errorMsg, true);
+      return false;
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = submitBtn.getAttribute('data-original-text') || 'Send Message';
+    }
+  }
+
+  // Contact Form Handler
+  const contactForm = document.getElementById('contactForm');
+  const contactSubmitBtn = document.getElementById('contactSubmitBtn');
+  if (contactSubmitBtn) {
+    contactSubmitBtn.setAttribute('data-original-text', 'Send Message <i class="fas fa-paper-plane"></i>');
+  }
+  
+  if (contactForm) {
+    contactForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const name = document.getElementById('contactName').value.trim();
+      const email = document.getElementById('contactEmail').value.trim();
+      const phone = document.getElementById('contactPhone').value.trim();
+      const message = document.getElementById('contactMsg').value.trim();
+      
+      if (!name || !email || !message) {
+        showToast("Please fill in all required fields.", true);
+        return;
+      }
+      
+      const templateParams = {
+        from_name: name,
+        from_email: email,
+        phone: phone || "Not provided",
+        message: message,
+        to_email: "excelinfosys11@gmail.com",
+        reply_to: email
+      };
+      
+      await sendEmail(EMAILJS_CONTACT_TEMPLATE, templateParams, contactForm, contactSubmitBtn);
+    });
+  }
+
+  // Repair Quote Form Handler
+  const quoteForm = document.getElementById('quoteForm');
+  const quoteSubmitBtn = document.getElementById('quoteSubmitBtn');
+  if (quoteSubmitBtn) {
+    quoteSubmitBtn.setAttribute('data-original-text', '<i class="fas fa-tools"></i> Submit Repair Request');
+  }
+  
+  if (quoteForm) {
+    quoteForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const name = document.getElementById('quoteName').value.trim();
+      const email = document.getElementById('quoteEmail').value.trim();
+      const phone = document.getElementById('quotePhone').value.trim();
+      const device = document.getElementById('quoteDevice').value;
+      const issue = document.getElementById('quoteIssue').value.trim();
+      
+      if (!name || !email || !phone || !issue) {
+        showToast("Please fill in all required fields.", true);
+        return;
+      }
+      
+      const templateParams = {
+        from_name: name,
+        from_email: email,
+        phone: phone,
+        device_type: device,
+        issue_description: issue,
+        to_email: "excelinfosys11@gmail.com",
+        reply_to: email
+      };
+      
+      await sendEmail(EMAILJS_REPAIR_TEMPLATE, templateParams, quoteForm, quoteSubmitBtn);
+    });
+  }
+
+  // ==================== UI Interactions ====================
+  // Mobile Toggle
+  const menuBtn = document.getElementById('mobileMenuBtn');
+  const navLinksEl = document.getElementById('navLinks');
+  if(menuBtn) {
+    menuBtn.addEventListener('click', () => {
+      navLinksEl.classList.toggle('active');
+    });
+  }
+
+  // Smooth scroll & active link
+  const sections = document.querySelectorAll('section[id]');
+  const navItems = document.querySelectorAll('.nav-link');
+  function updateActive() {
+    let current = '';
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop - 100;
+      if (window.scrollY >= sectionTop) {
+        current = section.getAttribute('id');
+      }
+    });
+    navItems.forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('href') === `#${current}`) {
+        link.classList.add('active');
+      }
+    });
+  }
+  window.addEventListener('scroll', updateActive);
+  window.addEventListener('load', updateActive);
+
+  document.querySelectorAll('.nav-link').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      const targetId = this.getAttribute('href').substring(1);
+      const target = document.getElementById(targetId);
+      if(target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        if(navLinksEl.classList.contains('active')) navLinksEl.classList.remove('active');
+      }
+    });
+  });
+
+  // Get Quote button redirect to repair section
+  const getQuoteBtn = document.getElementById('getQuoteBtn');
+  if(getQuoteBtn) {
+    getQuoteBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      const repairSection = document.getElementById('repair');
+      if(repairSection) {
+        repairSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  }
+
+</script>
+</body>
+</html>
